@@ -8,6 +8,8 @@ export class StateDirective implements OnChanges {
   @HostBinding('class') tdClassName!: string;
   constructor() {}
   ngOnChanges(): void {
+    console.log(this.appState);
+
     this.tdClassName = `state-${this.appState.toLowerCase()}`;
   }
 }
