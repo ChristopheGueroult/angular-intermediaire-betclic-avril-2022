@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { MainFacade } from 'src/app/store/facade/main.facade';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
-import { FontsizeService } from '../../services/fontsize.service';
-// import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -19,16 +18,16 @@ export class HeaderComponent implements OnInit {
   public user$!: Subject<User | null>;
   constructor(
     private authService: AuthService,
-    private fontsizeService: FontsizeService
+    private mainFacade: MainFacade
   ) {
     this.user$ = this.authService.user$;
   }
 
   public biggerSize() {
-    this.fontsizeService.biggerSize();
+    this.mainFacade.changeSize(true);
   }
   public normalSize() {
-    this.fontsizeService.normalSize();
+    this.mainFacade.changeSize(false);
   }
 
   ngOnInit(): void {}
