@@ -1,4 +1,4 @@
-<app-ui>
+<app-ui [ngClass]="{'bigSize' : bigSize$ | async}">
 
   <app-icon-nav class="tr-btn-open"></app-icon-nav>
   <app-icon-close class="tr-btn-close"></app-icon-close>

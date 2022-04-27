@@ -3,6 +3,8 @@ import {
   Component,
   HostListener,
 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { FontsizeService } from './core/services/fontsize.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
+  public bigSize$: Subject<boolean>;
+  constructor(private fontsizeService: FontsizeService) {
+    this.bigSize$ = this.fontsizeService.bigSize$;
+  }
   public title = 'crm-nov-bis';
   @HostListener('window:scroll')
   onScroll() {
