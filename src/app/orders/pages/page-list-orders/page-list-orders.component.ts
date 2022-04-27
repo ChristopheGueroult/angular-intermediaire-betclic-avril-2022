@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
 import { VersionService } from 'src/app/core/services/version.service';
+import { OrdersService } from '../../services/orders.service';
 import { OrdersFacade } from '../../store/facade/orders.facade';
 
 @Component({
@@ -50,6 +51,9 @@ export class PageListOrdersComponent implements OnInit {
   }
   public deleteItem(id: number): void {
     this.facade.deleteOrder(id);
+  }
+  public selectItems(expression: string): void {
+    this.facade.getOrderByClient(expression);
   }
 
   check() {

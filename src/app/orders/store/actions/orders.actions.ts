@@ -57,13 +57,13 @@ export const deleteOrderSuccessAction = createAction(
 
 // try get order by id capted by effect
 export const tryGetOrderByIdAction = createAction(
-  '[ todos ] try get order by id',
+  '[ Orders ] try get order by id',
   props<{ id: number }>()
 );
 
 // get order by id capted by reducer
 export const getOrderByISuccessdAction = createAction(
-  '[ todos ] get order by id',
+  '[ Orders ] get order by id',
   props<{ order: Order }>()
 );
 
@@ -71,4 +71,10 @@ export const getOrderByISuccessdAction = createAction(
 export const errorOrdersAction = createAction(
   '[Orders] error orders',
   props<{ error: any }>()
+);
+
+// get order by client capted by effect
+export const tryGetOrderClientdAction = createAction(
+  '[ Orders ] try get order by name',
+  props<{ expression: string }>()
 );

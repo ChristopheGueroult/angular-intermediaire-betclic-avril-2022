@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, Subject, tap } from 'rxjs';
+import { catchError, map, Observable, Subject, tap } from 'rxjs';
 import { ErrorHandler } from 'src/app/core/abstracts/error-handler';
 import { StateOrder } from 'src/app/core/enums/state-order';
 import { Order } from 'src/app/core/models/order';
@@ -89,5 +89,24 @@ export class OrdersService extends ErrorHandler {
     return this.http
       .get<Order>(`${this.urlApi}/orders/${id}`)
       .pipe(catchError(this.handleError));
+  }
+
+  public getItemsBySearch(expression: string): Observable<Order[]> {
+    const lowerExpression = expression.toLowerCase();
+    console.log(lowerExpression);
+    return this.http.get<Order[]>(`${this.urlApi}/orders`).pipe(
+      tap((data) => {
+        console.log(
+          data.filter((item) =>
+            item.client.toLowerCase().includes(lowerExpression)
+          )
+        );
+      }),
+      map((data) =>
+        data.filter((item) =>
+          item.client.toLowerCase().includes(lowerExpression)
+        )
+      )
+    );
   }
 }

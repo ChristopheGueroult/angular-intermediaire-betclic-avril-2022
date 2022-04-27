@@ -8,6 +8,8 @@ import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
 import { RouterModule } from '@angular/router';
 import { BtnActionComponent } from './components/btn-action/btn-action.component';
+import { FormSearchComponent } from './components/form-search/form-search.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { BtnActionComponent } from './components/btn-action/btn-action.component
     TotalPipe,
     StateDirective,
     BtnActionComponent,
+    FormSearchComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [
     TabLightComponent,
     BtnRouteComponent,
@@ -26,6 +29,7 @@ import { BtnActionComponent } from './components/btn-action/btn-action.component
     TotalPipe,
     StateDirective,
     BtnActionComponent,
+    FormSearchComponent,
   ],
 })
 export class SharedModule {}
