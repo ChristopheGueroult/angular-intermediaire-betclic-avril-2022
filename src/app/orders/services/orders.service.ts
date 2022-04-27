@@ -109,4 +109,10 @@ export class OrdersService extends ErrorHandler {
       )
     );
   }
+
+  public getItemsByFilter(filter: string | StateOrder): Observable<Order[]> {
+    return this.http
+      .get<Order[]>(`${this.urlApi}/orders`)
+      .pipe(map((data) => data.filter((item) => item.state === filter)));
+  }
 }

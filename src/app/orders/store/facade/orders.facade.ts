@@ -37,4 +37,7 @@ export class OrdersFacade {
   getOrderByClient(expression: string) {
     this.store.dispatch(ordersActions.tryGetOrderClientdAction({ expression }));
   }
+  loadOrdersByFilterState(filter: string | StateOrder) {
+    this.store.dispatch(ordersActions.tryGetOrdersByFilterdAction({ filter }));
+  }
 }

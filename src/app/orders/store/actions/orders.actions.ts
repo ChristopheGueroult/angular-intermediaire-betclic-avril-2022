@@ -78,3 +78,9 @@ export const tryGetOrderClientdAction = createAction(
   '[ Orders ] try get order by name',
   props<{ expression: string }>()
 );
+
+// try get order by filter on order state capted by effect
+export const tryGetOrdersByFilterdAction = createAction(
+  '[ Orders ] try get order by filter on state',
+  props<{ filter: string | StateOrder }>()
+);

@@ -19,7 +19,7 @@ export class PageListOrdersComponent implements OnInit {
   public headers: string[];
   public collection$ = this.facade.orders$;
   public version$!: Subject<number>;
-
+  public filters!: string[];
   constructor(
     private facade: OrdersFacade,
     private versionService: VersionService,
@@ -36,6 +36,7 @@ export class PageListOrdersComponent implements OnInit {
       'State',
     ];
     this.version$ = this.versionService.version;
+    this.filters = ['ALL', ...this.states];
   }
   ngOnInit(): void {
     this.facade.loadOrders();
@@ -54,6 +55,15 @@ export class PageListOrdersComponent implements OnInit {
   }
   public selectItems(expression: string): void {
     this.facade.getOrderByClient(expression);
+  }
+
+  public filterItems(filter: string | StateOrder): void {
+    filter = filter.toUpperCase();
+    if (filter !== 'ALL') {
+      this.facade.loadOrdersByFilterState(filter);
+    } else {
+      this.facade.loadOrders();
+    }
   }
 
   check() {

@@ -126,11 +126,26 @@ export class OrdersEffects {
   );
 
   // get orders by filter
-  getOrdersByFilter$ = createEffect(() =>
+  getOrdersByFilterClient$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ordersActions.tryGetOrderClientdAction),
       switchMap(({ expression }: { expression: string }) =>
         this.ordersService.getItemsBySearch(expression).pipe(
+          map((orders: Order[]) =>
+            ordersActions.getAllOrdersSuccessAction({ orders })
+          ),
+          catchError((error) => of(ordersActions.errorOrdersAction({ error })))
+        )
+      )
+    )
+  );
+
+  // get orders by filter on state order
+  getOrdersByFilterState$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ordersActions.tryGetOrdersByFilterdAction),
+      switchMap(({ filter }: { filter: string | StateOrder }) =>
+        this.ordersService.getItemsByFilter(filter).pipe(
           map((orders: Order[]) =>
             ordersActions.getAllOrdersSuccessAction({ orders })
           ),

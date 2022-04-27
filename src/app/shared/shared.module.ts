@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { BtnActionComponent } from './components/btn-action/btn-action.component';
 import { FormSearchComponent } from './components/form-search/form-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     StateDirective,
     BtnActionComponent,
     FormSearchComponent,
+    FilterComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [
@@ -30,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     StateDirective,
     BtnActionComponent,
     FormSearchComponent,
+    FilterComponent,
   ],
 })
 export class SharedModule {}
