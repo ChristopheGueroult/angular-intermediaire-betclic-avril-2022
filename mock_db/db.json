@@ -41,12 +41,20 @@
       "comment": "un comment pour client modis"
     },
     {
+      "state": "ACTIVE",
+      "tva": 20,
+      "totalCaHt": 1000,
       "name": "Betclic2",
+      "comment": "no comment",
+      "id": 3
+    },
+    {
+      "name": "test",
       "tva": 20,
       "state": "ACTIVE",
       "totalCaHt": 1000,
-      "comment": "no comment",
-      "id": 3
+      "comment": null,
+      "id": 4
     }
   ],
   "users": [

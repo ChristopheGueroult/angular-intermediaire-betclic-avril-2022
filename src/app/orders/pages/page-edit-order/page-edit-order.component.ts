@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Order } from 'src/app/core/models/order';
-import { OrdersService } from '../../services/orders.service';
-import { tryUpdateOrderAction } from '../../store/actions/orders.actions';
-import { selectOrderById } from '../../store/selectors/orders.selectors';
+import { OrdersFacade } from '../../store/facade/orders.facade';
 
 @Component({
   selector: 'app-page-edit-order',
@@ -13,11 +8,11 @@ import { selectOrderById } from '../../store/selectors/orders.selectors';
   styleUrls: ['./page-edit-order.component.scss'],
 })
 export class PageEditOrderComponent implements OnInit {
-  public item$ = this.store.select(selectOrderById);
-  constructor(private store: Store) {}
+  public item$ = this.facade.order$;
+  constructor(private facade: OrdersFacade) {}
 
   ngOnInit(): void {}
   public action(item: Order): void {
-    this.store.dispatch(tryUpdateOrderAction({ order: item }));
+    this.facade.updateOrder(item);
   }
 }
