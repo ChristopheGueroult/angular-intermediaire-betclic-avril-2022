@@ -14,6 +14,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OrdersService extends ErrorHandler {
+  // property collection$ : observable
+
+  // get all orders
+
+  // change stage order
+
+  // update order in collection
+
+  // add an order in collection
+
+  // delete an order in collection
+
+  // get order by id from collection
+
   /**
    * private collection property Observable
    */
@@ -24,6 +38,7 @@ export class OrdersService extends ErrorHandler {
     super();
     this.collection$ = this.http.get<Order[]>(`${this.urlApi}/orders`);
   }
+
   /**
    * refresh collection
    */
@@ -37,6 +52,7 @@ export class OrdersService extends ErrorHandler {
   /**
    * get collection
    */
+
   public get collection(): Observable<Order[]> {
     // this.refreshCollection();
     return this.collection$;

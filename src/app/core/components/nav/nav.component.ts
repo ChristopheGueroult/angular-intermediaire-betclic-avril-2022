@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { VersionService } from '../../services/version.service';
 
 @Component({
@@ -13,10 +14,19 @@ import { VersionService } from '../../services/version.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavComponent implements OnInit {
+  public langs = ['fr', 'en'];
+  public defaultLangue = this.translateService.getDefaultLang();
   constructor(
     private versionService: VersionService,
-    private cd: ChangeDetectorRef
-  ) {}
+    private cd: ChangeDetectorRef,
+    private translateService: TranslateService
+  ) {
+    console.log(this.translateService.getDefaultLang());
+  }
+  changeLang(event: any) {
+    const lang = event.target.value;
+    this.translateService.use(lang);
+  }
 
   ngOnInit(): void {}
   ngAfterViewInit(): void {

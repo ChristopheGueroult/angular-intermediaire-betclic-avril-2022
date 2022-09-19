@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
    */
   public modeDay = true;
   public user$!: Subject<User | null>;
+  public company = { companyName: 'Atos' };
   constructor(
     private authService: AuthService,
     private mainFacade: MainFacade
